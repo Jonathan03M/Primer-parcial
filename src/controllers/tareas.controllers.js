@@ -35,18 +35,14 @@ ctrl.putTarea = async(req, res)=>{
         res.json("No se pudo actualizar la tarea")
     }
 
-    res.json("Tarea actulizada")
+    res.json("Tarea actualizada")
 }
 
-ctrl.deleteTarea = async(req, res)=>{
-    const id = req.params.id
+ctrl.deleteTarea =  async (req,res) =>{
+    const id = req.params.id;
 
-    const eliminarTarea = await Tareas.findByIdAndUpdate(id, {isActive: false})
+    const eliminarTarea = await Tareas.deleteOne({_id:id,userID:req.user._id})
 
-    if(!eliminarTarea){
-        res.json("No se pudo eliminar la tarea")
-    }
-
-    res.json("Tarea eliminada")
+    res.json("Tarea eliminada" + eliminarTarea)
 }
 module.exports = ctrl

@@ -9,18 +9,18 @@ const schemaTareas = new Schema({
         type: String,
         require: true
     },
-   userID: {
+    userID: {
         type: Schema.Types.ObjectId,
         required: true
-   },
-   isActive: {
+    },
+    isActive: {
     type: Boolean,
     default: true
-   },
-   isDone: {
+    },
+    isDone: {
     type: Boolean,
     default: false
-   }
+    }
 }, {
     versionKey: false,
     timestamps: true

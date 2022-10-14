@@ -1,6 +1,7 @@
 const Usuario = require("../models/usuarios.model")
 const bcrypt = require("bcrypt")
 const generartoken = require("../helpers/generartoken")
+const tareasModel = require("../models/tareas.model")
 const ctrl = {}
 
 
@@ -44,6 +45,20 @@ ctrl.login = async(req, res)=>{
     res.json(token);
 
 }
+
+ctrl.buscarUsuario = async (req, res) => { 
+        const user = await Usuario.findById(req.params.id)
+    res.json(user)
+        } 
+
+ctrl.borrarUsuario = async (req, res) => { 
+    try {
+        const borrar = await Usuario.findByIdAndDelete(req.params.id, {usuario:req.Usuario})
+        const tareaborrar = await tareasModel.findOneAndDelete(req.userId, {_id:req.tareasModel})
+        res.json('Se borro el usuario correctamente')
+    } catch (error) {
+        res.status(400)
+    }}
 
 
 

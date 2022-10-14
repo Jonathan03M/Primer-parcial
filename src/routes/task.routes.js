@@ -8,6 +8,6 @@ router.get("/tareas", validarToken, getTarea)
 
 router.put("/tareas/:id", validarToken, putTarea)
 
-router.put("/eliminar/:id", validarToken, deleteTarea)
+router.delete("/eliminar/:id", validarToken, deleteTarea)
 
 module.exports = router;

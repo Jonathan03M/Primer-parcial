@@ -1,5 +1,7 @@
 const {Schema, model} = require("mongoose")
 
+require('./tareas.model')
+
 const schemaUsuario = new Schema({
     usuario:{
         type: String,
@@ -25,5 +27,7 @@ const schemaUsuario = new Schema({
     versionKey: false,
     timestamps: true
 })
+
+
 
 module.exports = model("usuarios", schemaUsuario)
